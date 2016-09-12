@@ -1,5 +1,4 @@
 <?php
-
 require 'Slim/Slim.php';
 
 $app = new Slim();
@@ -13,6 +12,9 @@ $app->delete('/wines/:id', 'deleteWine');
 
 $app->run();
 
+/**
+ *
+ */
 function getWines() {
 	$sql = "select * FROM wine ORDER BY name";
 	try {
@@ -25,7 +27,9 @@ function getWines() {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}
 }
-
+/**
+ *
+ */
 function getWine($id) {
 	$sql = "SELECT * FROM wine WHERE id=:id";
 	try {
@@ -40,7 +44,9 @@ function getWine($id) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}
 }
-
+/**
+ *
+ */
 function addWine() {
 	error_log('addWine\n', 3, '/var/tmp/php.log');
 	$request = Slim::getInstance()->request();
@@ -64,7 +70,9 @@ function addWine() {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}
 }
-
+/**
+ *
+ */
 function updateWine($id) {
 	$request = Slim::getInstance()->request();
 	$body = $request->getBody();
@@ -87,7 +95,9 @@ function updateWine($id) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}
 }
-
+/**
+ *
+ */
 function deleteWine($id) {
 	$sql = "DELETE FROM wine WHERE id=:id";
 	try {
@@ -100,7 +110,9 @@ function deleteWine($id) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}
 }
-
+/**
+ *
+ */
 function findByName($query) {
 	$sql = "SELECT * FROM wine WHERE UPPER(name) LIKE :query ORDER BY name";
 	try {
@@ -116,7 +128,9 @@ function findByName($query) {
 		echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 	}
 }
-
+/**
+ *
+ */
 function getConnection() {
 	$dbhost="127.0.0.1";
 	$dbuser="root";
