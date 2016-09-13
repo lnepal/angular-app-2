@@ -1,3 +1,6 @@
+/**
+ *
+ */
 function RouteCtrl($route) {
 
     var self = this;
